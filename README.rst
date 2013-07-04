@@ -9,6 +9,13 @@ Flask-Turbolinks
 Turbolinks for Flask.
 
 
+Turbolinks
+----------
+
+Turbolinks makes following links in your web application faster. For more
+information, visit the original rails repo: `turbolinks.js`_.
+
+
 Installation
 ------------
 
@@ -35,7 +42,7 @@ The backend flask app should be wrapped with turbolinks::
 
     app = Flask(__name__)
     # you app should has a secret key for session
-    app.secret_key = 'secret')
+    app.secret_key = 'secret'
 
     turbolinks(app)
 
