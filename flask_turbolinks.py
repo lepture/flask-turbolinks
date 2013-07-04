@@ -26,8 +26,7 @@ def turbolinks(app):
 
     @app.after_request
     def turbolinks_response(response):
-        if request.method != 'GET':
-            response.set_cookie('request_method', request.method)
+        response.set_cookie('request_method', request.method)
 
         if 'Location' in response.headers:
             # this is a redirect response
