@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='Flask-Turbolinks',
-    version='0.1.0',
+    version='0.1.1',
     url='https://github.com/lepture/flask-turbolinks',
     author='Hsiaoming Yang',
     author_email='me@lepture.com',
