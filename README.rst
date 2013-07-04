@@ -19,7 +19,7 @@ Or alternatively if you don't have pip::
 Usage
 -----
 
-To enable turbolinks, you need to put `turbolinks.js`_ in the ``<head>>`` of
+To enable turbolinks, you need to put `turbolinks.js`_ in the ``<head>`` of
 your html templates.
 
 
