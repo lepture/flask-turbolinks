@@ -1,4 +1,8 @@
-from urlparse import urlparse
+try:
+    from urlparse import urlparse
+except ImportError:
+    # python 3
+    from urllib.parse import urlparse
 from flask import request, session
 
 

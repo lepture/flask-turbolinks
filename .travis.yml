@@ -5,9 +5,10 @@ install:
 python:
     - "2.6"
     - "2.7"
+    - "3.3"
 
 script:
-    - nosetests -s
+    - python setup.py -q nosetests
 
 after_success:
     - coverage run --source=flask_turbolinks setup.py -q nosetests

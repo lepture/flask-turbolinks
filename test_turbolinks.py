@@ -35,7 +35,7 @@ def test_home():
     rv = client.get('/', headers={
         'X-XHR-Referer': '/page'
     })
-    assert '/page' == rv.data
+    assert '/page' == rv.data.decode('utf-8')
     assert 'request_method=GET' in rv.headers['Set-Cookie']
 
 
