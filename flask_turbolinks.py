@@ -26,6 +26,11 @@ def turbolinks(app):
 
     @app.after_request
     def turbolinks_response(response):
+        referer = request.headers.get('X-XHR-Referer')
+        if not referer:
+            # turbolinks not enabled
+            return response
+
         response.set_cookie('request_method', request.method)
 
         if 'Location' in response.headers:
@@ -34,7 +39,6 @@ def turbolinks(app):
             session['_turbolinks_redirect_to'] = loc
 
             # cross domain redirect
-            referer = request.headers.get('X-XHR-Referer')
             if referer and not same_origin(loc, referer):
                 response.status_code = 403
         else:
