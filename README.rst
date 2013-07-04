@@ -1,4 +1,4 @@
-Flask-Trubolinks
+Flask-Turbolinks
 ================
 
 Turbolinks for Flask.
