@@ -16,6 +16,8 @@ setup(
     py_modules=['flask_turbolinks'],
     platforms='any',
     install_requires=['Flask'],
+    test_require=['nose'],
+    test_suite='nose.collector',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',

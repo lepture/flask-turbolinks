@@ -1,6 +1,11 @@
 Flask-Turbolinks
 ================
 
+.. image:: https://travis-ci.org/lepture/flask-turbolinks.png?branch=master
+        :target: https://travis-ci.org/lepture/flask-turbolinks
+.. image:: https://coveralls.io/repos/lepture/flask-turbolinks/badge.png?branch=master
+        :target: https://coveralls.io/r/lepture/flask-turbolinks
+
 Turbolinks for Flask.
 
 

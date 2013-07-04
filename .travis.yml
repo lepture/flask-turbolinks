@@ -1,0 +1,17 @@
+language: python
+install:
+    - pip install coveralls flask
+
+python:
+    - "2.6"
+    - "2.7"
+
+script:
+    - nosetests -s
+
+after_success:
+    - coverage run --source=flask_turbolinks setup.py -q nosetests
+    - coveralls
+
+notifications:
+    email: false
