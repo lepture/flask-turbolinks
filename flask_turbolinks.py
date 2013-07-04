@@ -6,6 +6,17 @@ __all__ = ('turbolinks', 'same_origin')
 
 
 def turbolinks(app):
+    """Enable turbolinks.
+
+    You don't need to do any configuration, wrap your app with turbolinks::
+
+        app = Flask(__name__)
+        app.secret_key = 'secret'
+        turbolinks(app)
+
+    And everything will be ready. Put turbolinks.js in the ``<head>`` of
+    your html templates, it just works.
+    """
 
     @app.before_request
     def turbolinks_referer():
@@ -32,6 +43,8 @@ def turbolinks(app):
                 loc = session.pop('_turbolinks_redirect_to')
                 response.headers['X-XHR-Redirected-To'] = loc
         return response
+
+    return app
 
 
 def same_origin(current_uri, redirect_uri):
