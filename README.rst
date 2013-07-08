@@ -57,3 +57,26 @@ Note
 This project does not contain the javascript code, you need to grab the code from `turbolinks.js` on GitHub. It is written in CoffeeScript, you can compile it with::
 
     coffee -c turbolinks.js.coffee
+
+
+Demo
+----
+
+There is a demo in the ``example`` directory, start a server and open the
+url with Chrome. View the requests with developer tools of Chrome.
+
+
+Credits
+-------
+
+Thanks for rails, thanks for the help of Rei_.
+
+.. _Rei: https://github.com/chloerei
+
+
+Changelog
+---------
+
+We keep the changelog on `GitHub releases`_.
+
+.. _`GitHub releases`: https://github.com/lepture/flask-turbolinks/releases
