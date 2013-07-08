@@ -2,11 +2,17 @@
 # coding: utf-8
 
 
+try:
+    # python setup.py test
+    import multiprocessing
+except ImportError:
+    pass
+
 from setuptools import setup
 
 setup(
     name='Flask-Turbolinks',
-    version='0.1.1',
+    version='0.1.2',
     url='https://github.com/lepture/flask-turbolinks',
     author='Hsiaoming Yang',
     author_email='me@lepture.com',
@@ -14,6 +20,7 @@ setup(
     long_description=open('README.rst').read(),
     license=open('LICENSE').read(),
     py_modules=['flask_turbolinks'],
+    zip_safe=False,
     platforms='any',
     install_requires=['Flask'],
     tests_require=['nose'],
