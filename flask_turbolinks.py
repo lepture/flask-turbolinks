@@ -35,7 +35,9 @@ def turbolinks(app):
             # turbolinks not enabled
             return response
 
-        response.set_cookie('request_method', request.method)
+        method = request.cookies.get('request_method', None)
+        if not method or method != request.method:
+            response.set_cookie('request_method', request.method)
 
         if 'Location' in response.headers:
             # this is a redirect response

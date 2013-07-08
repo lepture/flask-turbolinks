@@ -46,6 +46,13 @@ def test_redirect():
     assert 'X-XHR-Redirected-To' not in rv.headers
 
 
+def test_cookie():
+    rv = client.get('/', headers={
+        'Cookie': 'request_method=GET'
+    })
+    assert 'Set-Cookie' not in rv.headers
+
+
 def test_x_redirect():
     rv = client.get('/x-redirect')
     assert rv.status_code == 302
