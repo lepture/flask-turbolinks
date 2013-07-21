@@ -54,7 +54,11 @@ And everything works now, no more configuration.
 Note
 ----
 
-This project does not contain the javascript code, you need to grab the code from `turbolinks.js` on GitHub. It is written in CoffeeScript, you can compile it with::
+You can install the javascript code with component::
+
+    $ component install lepture/flask-turbolinks
+
+You can also grab the code from `turbolinks.js` on GitHub. It is written in CoffeeScript, you can compile it with::
 
     coffee -c turbolinks.js.coffee
 
