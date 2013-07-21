@@ -1,0 +1,16 @@
+{
+  "name": "flask-turbolinks",
+  "repo": "lepture/flask-turbolinks",
+  "description": "Turbolinks for component.",
+  "version": "0.0.1",
+  "keywords": ["turbolinks", "pjax"],
+  "dependencies": {
+    "component/jquery": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

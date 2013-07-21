@@ -13,3 +13,4 @@ parts
 docs/_build
 cover/
 .tox
+*.bak

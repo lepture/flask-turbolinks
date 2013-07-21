@@ -30,3 +30,7 @@ clean-docs:
 
 docs:
 	@$(MAKE) -C docs html
+
+js:
+	@coffee -b -c -p vendor/turbolinks.js.coffee > index.js
+	@sed -i .bak 's/this\.Turbolinks/module.exports/' index.js
