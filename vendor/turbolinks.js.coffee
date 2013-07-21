@@ -1,4 +1,4 @@
-CACHE_SIZE     = 10
+cacheSize      = 10
 currentState   = null
 referer        = null
 loadedAssets   = null
@@ -21,6 +21,9 @@ fetchReplacement = (url) ->
   xhr.setRequestHeader 'X-XHR-Referer', referer
 
   xhr.onload = ->
+    if loc = xhr.getResponseHeader 'Location' and 400 <= xhr.status < 600
+      return location.href = loc
+
     triggerEvent 'page:receive'
 
     if doc = processResponse()
@@ -58,7 +61,10 @@ cacheCurrentPage = ->
     positionY: window.pageYOffset,
     positionX: window.pageXOffset
 
-  constrainPageCacheTo(CACHE_SIZE)
+  constrainPageCacheTo cacheSize
+
+pagesCached = (size = cacheSize) ->
+  cacheSize = parseInt(size) if /^[\d]+$/.test size
 
 constrainPageCacheTo = (limit) ->
   for own key, value of pageCache
@@ -122,6 +128,9 @@ triggerEvent = (name) ->
   event = document.createEvent 'Events'
   event.initEvent name, true, true
   document.dispatchEvent event
+
+pageChangePrevented = ->
+  !triggerEvent 'page:before-change'
 
 processResponse = ->
   clientOrServerError = ->
@@ -208,7 +217,7 @@ handleClick = (event) ->
   unless event.defaultPrevented
     link = extractLink event
     if link.nodeName is 'A' and !ignoreClick(event, link)
-      visit link.href
+      visit link.href unless pageChangePrevented()
       event.preventDefault()
 
 
@@ -278,5 +287,8 @@ else
   visit = (url) ->
     document.location.href = url
 
-# Call Turbolinks.visit(url) from client code
-@Turbolinks = { visit }
+# Public API
+#   Turbolinks.visit(url)
+#   Turbolinks.pagesCached() 
+#   Turbolinks.pagesCached(20)
+@Turbolinks = { visit, pagesCached }
