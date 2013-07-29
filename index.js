@@ -32,11 +32,8 @@ fetchReplacement = function(url) {
   xhr.setRequestHeader('Accept', 'text/html, application/xhtml+xml, application/xml');
   xhr.setRequestHeader('X-XHR-Referer', referer);
   xhr.onload = function() {
-    var doc, loc, _ref1;
+    var doc;
 
-    if (loc = xhr.getResponseHeader('Location' && (400 <= (_ref1 = xhr.status) && _ref1 < 600))) {
-      return location.href = loc;
-    }
     triggerEvent('page:receive');
     if (doc = processResponse()) {
       reflectNewUrl(url);
@@ -49,6 +46,7 @@ fetchReplacement = function(url) {
       }
       return triggerEvent('page:load');
     } else {
+      url = xhr.getResponseHeader('Location') || url;
       return document.location.href = url;
     }
   };
