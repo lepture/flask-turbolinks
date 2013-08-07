@@ -1,3 +1,14 @@
+# coding: utf-8
+"""
+    flask_turbolinks
+    ~~~~~~~~~~~~~~~~
+
+    Turbolinks implementation in Flask.
+
+    :copyright: (c) 2013 by Hsiaoming Yang.
+    :license: BSD, see LICENSE for more detail.
+"""
+
 try:
     from urlparse import urlparse
 except ImportError:
