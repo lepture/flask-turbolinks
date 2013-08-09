@@ -34,15 +34,15 @@ def turbolinks(app):
     """
 
     @app.before_request
-    def turbolinks_referer():
-        referer = request.headers.get('X-XHR-Referer')
-        if referer:
-            request.referer = referer
+    def turbolinks_referrer():
+        referrer = request.headers.get('X-XHR-Referer')
+        if referrer:
+            request.referrer = referrer
 
     @app.after_request
     def turbolinks_response(response):
-        referer = request.headers.get('X-XHR-Referer')
-        if not referer:
+        referrer = request.headers.get('X-XHR-Referer')
+        if not referrer:
             # turbolinks not enabled
             return response
 
@@ -56,7 +56,7 @@ def turbolinks(app):
             session['_turbolinks_redirect_to'] = loc
 
             # cross domain redirect
-            if referer and not same_origin(loc, referer):
+            if referrer and not same_origin(loc, referrer):
                 response.status_code = 403
         else:
             if '_turbolinks_redirect_to' in session:
