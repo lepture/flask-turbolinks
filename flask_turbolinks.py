@@ -37,7 +37,9 @@ def turbolinks(app):
     def turbolinks_referrer():
         referrer = request.headers.get('X-XHR-Referer')
         if referrer:
-            request.referrer = referrer
+            # since request.referrer is read only
+            # use the misspelling referer instead
+            request.referer = referrer
 
     @app.after_request
     def turbolinks_response(response):
