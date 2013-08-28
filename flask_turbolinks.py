@@ -17,7 +17,7 @@ except ImportError:
 from flask import request, session
 
 
-__all__ = ('turbolinks', 'same_origin')
+__all__ = ('turbolinks',)
 
 
 def turbolinks(app):
