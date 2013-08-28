@@ -33,13 +33,7 @@ def turbolinks(app):
     your html templates, it just works.
     """
 
-    @app.before_request
-    def turbolinks_referrer():
-        referrer = request.headers.get('X-XHR-Referer')
-        if referrer:
-            # since request.referrer is read only
-            # use the misspelling referer instead
-            request.referer = referrer
+    app.wsgi_app = TurbolinksMiddleware(app.wsgi_app)
 
     @app.after_request
     def turbolinks_response(response):
@@ -67,6 +61,18 @@ def turbolinks(app):
         return response
 
     return app
+
+
+class TurbolinksMiddleware(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, environ, start_response):
+        referrer = environ.get('HTTP_X_XHR_REFERER')
+        if referrer:
+            # overwrite referrer
+            environ['HTTP_REFERER'] = referrer
+        return self.app(environ, start_response)
 
 
 def same_origin(current_uri, redirect_uri):
