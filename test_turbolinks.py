@@ -10,7 +10,7 @@ turbolinks(app)
 
 @app.route('/')
 def home():
-    return request.referer or ''
+    return request.referrer or ''
 
 
 @app.route('/page')
@@ -28,10 +28,8 @@ def x_redirect():
     return redirect('http://lepture.com')
 
 
-client = app.test_client()
-
-
 def test_home():
+    client = app.test_client()
     rv = client.get('/', headers={
         'X-XHR-Referer': '/page'
     })
@@ -40,6 +38,7 @@ def test_home():
 
 
 def test_redirect():
+    client = app.test_client()
     rv = client.get('/redirect', headers={
         'X-XHR-Referer': '/page'
     })
@@ -47,6 +46,7 @@ def test_redirect():
 
 
 def test_cookie():
+    client = app.test_client()
     rv = client.get('/', headers={
         'Cookie': 'request_method=GET'
     })
@@ -54,6 +54,7 @@ def test_cookie():
 
 
 def test_x_redirect():
+    client = app.test_client()
     rv = client.get('/x-redirect')
     assert rv.status_code == 302
 
