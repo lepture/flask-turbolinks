@@ -8,17 +8,18 @@ try:
 except ImportError:
     pass
 
+import flask_turbolinks
 from setuptools import setup
 
 setup(
     name='Flask-Turbolinks',
-    version='0.1.2',
+    version=flask_turbolinks.__version__,
     url='https://github.com/lepture/flask-turbolinks',
     author='Hsiaoming Yang',
     author_email='me@lepture.com',
     description='Turbolinks for Flask.',
     long_description=open('README.rst').read(),
-    license=open('LICENSE').read(),
+    license='BSD',
     py_modules=['flask_turbolinks'],
     zip_safe=False,
     platforms='any',

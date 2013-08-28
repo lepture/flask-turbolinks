@@ -14,8 +14,9 @@ try:
 except ImportError:
     # python 3
     from urllib.parse import urlparse
-from flask import request, session
 
+__version__ = '0.1.3'
+__author__ = 'Hsiaoming Yang <me@lepture.com>'
 
 __all__ = ('turbolinks',)
 
@@ -32,6 +33,7 @@ def turbolinks(app):
     And everything will be ready. Put turbolinks.js in the ``<head>`` of
     your html templates, it just works.
     """
+    from flask import request, session
 
     app.wsgi_app = TurbolinksMiddleware(app.wsgi_app)
 
