@@ -32,5 +32,6 @@ docs:
 	@$(MAKE) -C docs html
 
 js:
+	@curl https://raw.github.com/rails/turbolinks/master/lib/assets/javascripts/turbolinks.js.coffee -o vendor/turbolinks.js.coffee
 	@coffee -b -c -p vendor/turbolinks.js.coffee > index.js
 	@sed -i .bak 's/this\.Turbolinks/module.exports/' index.js
