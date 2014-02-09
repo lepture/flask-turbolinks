@@ -11,6 +11,11 @@ except ImportError:
 import flask_turbolinks
 from setuptools import setup
 
+
+def fread(filepath):
+    with open(filepath, 'r') as f:
+        return f.read()
+
 setup(
     name='Flask-Turbolinks',
     version=flask_turbolinks.__version__,
@@ -18,7 +23,7 @@ setup(
     author='Hsiaoming Yang',
     author_email='me@lepture.com',
     description='Turbolinks for Flask.',
-    long_description=open('README.rst').read(),
+    long_description=fread('README.rst'),
     license='BSD',
     py_modules=['flask_turbolinks'],
     zip_safe=False,
