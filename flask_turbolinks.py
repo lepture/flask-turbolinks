@@ -15,7 +15,7 @@ except ImportError:
     # python 3
     from urllib.parse import urlparse
 
-__version__ = '0.1.3'
+__version__ = '0.2.0'
 __author__ = 'Hsiaoming Yang <me@lepture.com>'
 
 __all__ = ('turbolinks',)
@@ -55,7 +55,10 @@ def turbolinks(app):
 
             # cross domain redirect
             if referrer and not same_origin(loc, referrer):
-                response.status_code = 403
+                response.status_code = 200
+                response.data = (
+                    '<body><script>location.href="%s"</script></body>'
+                ) % loc
         else:
             if '_turbolinks_redirect_to' in session:
                 loc = session.pop('_turbolinks_redirect_to')

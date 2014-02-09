@@ -61,17 +61,20 @@ def test_x_redirect():
     rv = client.get('/x-redirect', headers={
         'X-XHR-Referer': '/page'
     })
-    assert rv.status_code == 403
+    assert rv.status_code == 200
+    assert b'script' in rv.data
 
     rv = client.get('/x-redirect', headers={
         'X-XHR-Referer': 'http://example.com/'
     })
-    assert rv.status_code == 403
+    assert rv.status_code == 200
+    assert b'script' in rv.data
 
     rv = client.get('/x-redirect', headers={
         'X-XHR-Referer': 'http://lepture.com:8000/'
     })
-    assert rv.status_code == 403
+    assert rv.status_code == 200
+    assert b'script' in rv.data
 
     rv = client.get('/x-redirect', headers={
         'X-XHR-Referer': 'http://lepture.com/life/'
